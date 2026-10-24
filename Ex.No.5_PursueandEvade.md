@@ -108,7 +108,7 @@ public class Pursuer : MonoBehaviour
 12. Run the game 
 13. Stop the program
     
-```
+
 ### Output:
 
 <img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/b16b4664-c39a-4467-8683-a49703d7b01e" />
