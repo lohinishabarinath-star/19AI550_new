@@ -1,10 +1,10 @@
 # Ex.No: 5  Implementation of Steering behaviour-Pursue and Evade in Unity
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 24.10.2026                                                                           
+### REGISTER NUMBER : 212225240079
 ### AIM: 
 To write a program to simulate the process of Pursue and Evade behavior in Unity using NavigationMeshAgent. 
 ### Algorithm:
-```
+
 1. Create a New Unity Project by Open the  Unity Hub and create a new 3D Project.
 2. Name the project "SteeringBehaviors" and select a location. Click Create.
 3.Open Unity Scene (default is SampleScene).
@@ -30,76 +30,79 @@ To write a program to simulate the process of Pursue and Evade behavior in Unity
     Evader: Set Speed = 6.
 5. Write a script for  Player_movement behavior and save it
 
-using System.Collections;
-using System.Collections.Generic;
+**Player script**
+```
+
 using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float speed;
-    void Start()
-    {
-        float xdir = Input.GetAxis("Horizontal") * speed;
-        float zdir = Input.GetAxis("Vertical") * speed;
-        transform.position=new Vector3(xdir,zdir);
-    }
+    public float speed = 5f;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float z = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+
+        transform.Translate(x, 0, z);
     }
 }
+
+```
+
 **Evader script**
+```
+using UnityEngine;
+using UnityEngine.AI;
+
 public class Evader : MonoBehaviour
 {
-    // Start is called before the first frame update
     public NavMeshAgent agent;
     public Transform target;
-    public float evadespeed;
+    public float evadespeed = 5f;
+
     void Start()
     {
-        agent= GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    void evade()
-    {
-        Vector3 fleedir = transform.position - target.position;
-        Vector3 evadeposition = transform.position + fleedir.normalized * evadespeed;
-        agent.SetDestination(evadeposition);
-
-    }
-    // Update is called once per frame
     void Update()
     {
-        evade();          
-     }
+        Vector3 dir = transform.position - target.position;
+        Vector3 destination = transform.position
+                            + dir.normalized * evadespeed;
+
+        agent.SetDestination(destination);
+    }
 }
+```
+
 **Pursuer script**
-public class Pursuer: MonoBehaviour
+```
+using UnityEngine;
+using UnityEngine.AI;
+
+public class Pursuer : MonoBehaviour
 {
-    // Start is called before the first frame update
     public NavMeshAgent agent;
     public Transform target;
-    public float speed;
+    public float speed = 4f;
+
     void Start()
     {
-        agent=this.GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
     }
-       // Update is called once per frame
-    void pursue()
-    {
-       Vector3 targetvelocity=target.position-transform.position;
-       Vector3 futurepos = transform.position + targetvelocity.normalized*speed;
-       agent.SetDestination(futurepos);
-    } 
-    // Update is called once per frame
+
     void Update()
     {
-        pursue();          
-     }
+        Vector3 dir = target.position - transform.position;
+        Vector3 destination = target.position;
+
+        agent.speed = speed;
+        agent.SetDestination(destination);
+    }
 }
+```
 7. Attach the Script to each player,pursuer and Evader.
    Drag & Drop the Target from the Hierarchy into the "Target" field in the script component ( For pursuer and Evader).
 12. Run the game 
@@ -108,10 +111,13 @@ public class Pursuer: MonoBehaviour
 ```
 ### Output:
 
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/b16b4664-c39a-4467-8683-a49703d7b01e" />
 
 
+<img width="905" height="1063" alt="image" src="https://github.com/user-attachments/assets/6c959273-3389-4fd0-990a-78deb831b4a6" />
 
 
+<img width="907" height="908" alt="image" src="https://github.com/user-attachments/assets/f6bc7a69-5238-4436-b586-ecf11dbb8d75" />
 
 
 
