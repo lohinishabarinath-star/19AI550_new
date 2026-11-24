@@ -1,6 +1,6 @@
-# Ex.No: 9  Implementation of RollarBall Design using Reinforcement Learning 
-### DATE:                                                                            
-### REGISTER NUMBER : 
+<img width="1457" height="1007" alt="image" src="https://github.com/user-attachments/assets/36125c42-4456-4f57-8b9d-662ab3db45b0" /># Ex.No: 9  Implementation of RollarBall Design using Reinforcement Learning 
+### DATE: 24.11.2026                                                                         
+### REGISTER NUMBER : 212225240079
 ### AIM: 
 To write a program to design RollerBall and train the Rollerbal by Reinforcement learning  in Unity 
 ### Installation Required 
@@ -49,9 +49,9 @@ tensorboard --logdir results
 16 Get the results by running the localhost on specific port ( shown in tensorboard)
 ```  
 ### Program:
-```
-1. File : RollerAgent.cs 
 
+1. File : RollerAgent.cs 
+```
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -132,9 +132,9 @@ public class RollerAgent : Agent
         continuous[1] = Input.GetAxis("Vertical");
     }
 }
-
+```
 2. Create a "Rollerball.yaml" file (create a Config folder inside your project ) attach the following code 
-
+```
 behaviors:
   RollerBallBehavior:
     trainer_type: ppo
@@ -157,12 +157,16 @@ behaviors:
     max_steps: 500000
     time_horizon: 64
     summary_freq: 10000
+```
 ### Output:
 
+<img width="1917" height="1078" alt="Screenshot 2026-11-24 090709" src="https://github.com/user-attachments/assets/18b4710f-2809-43c5-b108-1023720d03e2" />
 
+<img width="1457" height="1007" alt="image" src="https://github.com/user-attachments/assets/197b852b-0f26-4559-a618-161cf8e17d17" />
 
+<img width="1462" height="1020" alt="image" src="https://github.com/user-attachments/assets/a68763c3-3ef5-4394-bb9e-f837f8ab9d5b" />
 
-
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/1f711a71-fb8c-4197-b651-e70f6094eb3c" />
 
 
 
